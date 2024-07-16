@@ -1,58 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React,{useEffect} from 'react';
+import SignInPage from './components/SigninPage';
+import SignUpPage from './components/SignUpPage';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import HomePage from './components/HomePage';
+import { userAuthenticated } from './app/authenticationSlice';
+import Navbar  from './components/Navbar';
+import { Redirect  } from 'react-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+const App = () => {
+ const {isLoggedIn} = useSelector(state => state.authenticationSlice);
+ 
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    const token = sessionStorage.getItem('token');
+    if(token !== undefined && token !== null )
+    {
+      dispatch(userAuthenticated({token}));
+    }
+  }, );
+
+return <BrowserRouter>
+<Navbar />
+<Routes>
+  <Route exact path='/' element={() => (isLoggedIn ? <HomePage /> : <SignInPage />)} />
+  <Route path='/signup' exact element={<SignUpPage />}/>
+  <Route path='/signin' exact element={() => (isLoggedIn ? <Redirect to='/' /> : <SignInPage />)}/>
+  <Route component={() =><h2>Page Not Found!</h2> } />
+</Routes>
+</BrowserRouter>
+
+
+
+
+
+
+
+
 }
 
 export default App;
