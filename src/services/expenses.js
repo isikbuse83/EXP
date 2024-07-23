@@ -1,68 +1,38 @@
-import {setExpenses,newExpense,editExpense,deleteExpense} 
-from '../app/ExpensesSlice';
-import axios from 'axios';
+import { setExpenses, newExpense, editExpense, deleteExpense } from '../app/ExpensesSlice';
+import axiosInstance from './axiosInstance';
 
-
-
-const axiosInstance = axios.create({
-    baseURL: `${process.env.React_APP_BASE_URL}/Expense`,
-    headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-    },
-    withCredentials: false
-});
-
-axiosInstance.interceptors.request.use(config =>{
-    config.headers = {authorization:'Bearer' + sessionStorage.getItem('token')};
-    return config;
-});
-
-
-export const GetExpenses= async(dispatch) => {
+export const GetExpenses = async (dispatch) => {
     try {
-
-        const {data } = await axiosInstance.get();
-
+        const { data } = await axiosInstance.get('/Expense');
         dispatch(setExpenses(data));
-}catch {
-        console.log('Error!');
+    } catch (error) {
+        console.log('Error!', error);
     }
 }
 
-export const NewExpense = async (dispatch,expense) =>  {
-    try{
-       
-        dispatch(newExpense({id:10 ,description: expense.description,
-            amount: expense.amount}));
-
-            const {data } = await axiosInstance.post("", expense)
-
-            console.log('Data: ',data)
-
-    }catch{
-        console.log('Error!');
+export const NewExpense = async (dispatch, expense) => {
+    try {
+        const { data } = await axiosInstance.post('/Expense', expense);
+        dispatch(newExpense(data));
+    } catch (error) {
+        console.log('Error!', error);
     }
 }
 
-export const EditExpense = async (dispatch,expense) => {
-    try{
-        await axiosInstance.put('',expense);
+export const EditExpense = async (dispatch, expense) => {
+    try {
+        await axiosInstance.put(`/Expense/${expense.id}`, expense);
         dispatch(editExpense(expense));
-
-    }catch{
-        console.log('Error!');
+    } catch (error) {
+        console.log('Error!', error);
     }
 }
 
-export const DeleteExpense = async (dispatch,expense) => {
-
-    try{
-        console.log('deleting expense: ',expense);
-        await axiosInstance.delete('',{data: {...expense} });
+export const DeleteExpense = async (dispatch, expense) => {
+    try {
+        await axiosInstance.delete(`/Expense/${expense.id}`);
         dispatch(deleteExpense(expense));
-
-    }catch{
-        console.log('Error!');
+    } catch (error) {
+        console.log('Error!', error);
     }
 }

@@ -1,17 +1,13 @@
-import SignInPage from './components/SigninPage';
-import SignUpPage from './components/SignUpPage';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import HomePage from './components/HomePage';
 import { userAuthenticated } from './app/authenticationSlice';
+import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import { Navigate } from 'react-router-dom';
-import React from 'react';
-import { useEffect } from 'react';
+import Routes from './router/routes';
+
 
 const App = () => {
   const { isLoggedIn } = useSelector(state => state.authenticationSlice);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,12 +20,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
-      <Routes>
-        <Route exact path='/' element={isLoggedIn ? <HomePage /> : <SignInPage />} />
-        <Route path='/signup' exact element={<SignUpPage />} />
-        <Route path='/signin' exact element={isLoggedIn ? <Navigate to='/' /> : <SignInPage />} />
-        <Route path='*' element={<h2>Page Not Found!</h2>} />
-      </Routes>
+      <Routes isLoggedIn={isLoggedIn} />
     </BrowserRouter>
   );
 };

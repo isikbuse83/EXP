@@ -1,39 +1,33 @@
-import React, { useState } from "react";
-import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
-import { SignIn } from "../services/authentication";
-import { useDispatch } from "react-redux";
+
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { userAuthenticated } from '../app/authenticationSlice';
+import { SignIn } from '../services/authentication';
 
 const SignInPage = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [credentials, setCredentials] = useState({ username: '', password: '' });
   const dispatch = useDispatch();
 
-  return (
-    <div style={{ width: '30rem', margin: 'auto', paddingTop: '8px' }}>
-      <Form onSubmit={event => {
-        event.preventDefault();
-        SignIn(dispatch, { username, password });
-      }}>
-        <h4 style={{ textAlign: 'center' }}>Welcome Back</h4>
-        <InputGroup className="mb-3">
-          <FormControl
-            placeholder="Username"
-            onChange={event => setUsername(event.target.value)}
-          />
-        </InputGroup>
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setCredentials({
+      ...credentials,
+      [name]: value,
+    });
+  };
 
-        <InputGroup className="mb-3">
-          <FormControl
-            placeholder="Password"
-            type="password"
-            onChange={event => setPassword(event.target.value)}
-          />
-        </InputGroup>
-        <Button type="submit" variant="primary" style={{ margin: 'auto', display: 'block', width: '10rem' }}>
-          Sign In
-        </Button>
-      </Form>
-    </div>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = await SignIn(credentials);
+    dispatch(userAuthenticated(data));
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" name="username" value={credentials.username} onChange={handleChange} placeholder="Username" />
+      <input type="password" name="password" value={credentials.password} onChange={handleChange} placeholder="Password" />
+      <button type="submit">Sign In</button>
+    </form>
   );
 };
 

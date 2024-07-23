@@ -3,7 +3,8 @@ import React, {useState,useEffect} from 'react';
 import { DeleteExpense, EditExpense, NewExpense } from "../services/expenses";
 import { useDispatch } from 'react-redux';
 
-export default ({expense,setIsEditing}) => {
+
+const expenses = ({expense,setIsEditing}) => {
     const descriptions = ['Food','Credit Card','Car Rental','Flight Ticket','Gas','Student Loans'];
     const [amount,setAmount]= useState(0);
     const[description,setDescription]=useState(descriptions[0]);
@@ -64,4 +65,6 @@ export default ({expense,setIsEditing}) => {
             </div>
         </Row>
     </Form>
-}
+};
+
+export default expenses
