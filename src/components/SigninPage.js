@@ -9,6 +9,7 @@ const SignInPage = () => {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
+    
     const { name, value } = e.target;
     setCredentials({
       ...credentials,
@@ -18,7 +19,9 @@ const SignInPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await SignIn(credentials);
+   
+
+    const data = await SignIn(dispatch,credentials);
     dispatch(userAuthenticated(data));
   };
 

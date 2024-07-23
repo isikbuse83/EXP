@@ -4,6 +4,7 @@ import { userAuthenticated } from '../app/authenticationSlice';
 
 export const SignUp = async (dispatch, credentials) => {
     try {
+        
         const { data } = await axiosInstance.post('/Authentication/signup', credentials);
         dispatch(userAuthenticated(data));
     } catch (error) {
