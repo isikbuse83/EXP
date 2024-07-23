@@ -9,7 +9,7 @@ initialState: {
 
 reducers: {
     userAuthenticated: (state,action ) => {
-        sessionStorage.setItem('token', action.payload.token);
+ sessionStorage.setItem('token', action.payload.token);
         return {
             ...state, ...{
                 token: action.payload.token,

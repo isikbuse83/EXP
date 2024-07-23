@@ -3,9 +3,6 @@ import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import {SignUp } from "../services/authentication";
 import { useDispatch } from "react-redux";
 
-
-
-
 const SignUpPage=() => {
 const [username,setUsername] = useState('');
 const [email,setEmail] = useState('');

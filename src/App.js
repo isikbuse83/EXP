@@ -7,7 +7,7 @@ import Routes from './router/routes';
 
 
 const App = () => {
-  const { isLoggedIn } = useSelector(state => state.authenticationSlice);
+  const { isLoggedIn } = useSelector(state => state.authentication.isLoggedIn);
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -1,21 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 export const expensesSlice = createSlice({
 name: 'expenses',
 initialState:{
     expenses: [],
 },
-
 reducers: {
     setExpenses: (state,action) => {
        
         return {...state,expenses: [...action.payload] };
     },
-
     newExpense: (state,action ) => {
         return {...state,expenses: [action.payload,...state.expenses] };
-        
     },
 
     editExpense: (state, action) => {
@@ -34,7 +30,6 @@ reducers: {
             expense.id !== action.payload.id);
 
             return {...state,expenses: [...expenses]} ;
-        
     }
 }
 
