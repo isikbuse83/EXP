@@ -4,6 +4,7 @@ import axiosInstance from './axiosInstance';
 export const GetExpenses = async (dispatch) => {
     try {
         const { data } = await axiosInstance.get('/Expense');
+        console.log('expense data: ', data);
         dispatch(setExpenses(data));
     } catch (error) {
         console.log('Error!', error);
@@ -21,7 +22,7 @@ export const NewExpense = async (dispatch, expense) => {
 
 export const EditExpense = async (dispatch, expense) => {
     try {
-        await axiosInstance.put(`/Expense/${expense.id}`, expense);
+        await axiosInstance.put(`/Expense`, expense);
         dispatch(editExpense(expense));
     } catch (error) {
         console.log('Error!', error);

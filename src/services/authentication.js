@@ -15,7 +15,8 @@ export const SignUp = async (dispatch, credentials) => {
 export const SignIn = async (dispatch, credentials) => {
     try {
         const { data } = await axiosInstance.post('/Authentication/signin', credentials);
-        dispatch(userAuthenticated(data));
+       
+        return data;
     } catch (error) {
         console.log('Error!', error);
     }

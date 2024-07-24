@@ -9,14 +9,18 @@ export const authenticationSlice = createSlice({
   },
   reducers: {
     userAuthenticated: (state, action) => {
-      //sessionStorage.setItem('token', action.payload.token);
-      // return {
-      //   ...state,
-      //   ...{
-      //     token: action.payload.token,
-      //     isLoggedIn: false,
-      //   }
-      // }
+      console.log(state);
+      console.log(action.payload);
+      sessionStorage.setItem('token', action.payload.token);
+
+      return {
+        ...state,
+        ...{
+          token: action.payload.token,
+          isLoggedIn: true,
+        }
+      }
+  
     },
     logout: () => {
       sessionStorage.clear();
