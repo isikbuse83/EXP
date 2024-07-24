@@ -14,13 +14,13 @@ builder.Services.AddControllers();
 
 builder.Services.AddDbContext<AppDbContext>();
 
-builder.Services.AddTransient<IExpensesServices,ExpensesServices>();
+builder.Services.AddTransient<IExpensesServices, ExpensesServices>();
 
-builder.Services.AddTransient<IUserService,UserService>();
+builder.Services.AddTransient<IUserService, UserService>();
 
 builder.Services.AddTransient<IPasswordHasher, PasswordHasher>();
 
-builder.Services.AddTransient<IHttpContextAccessor,HttpContextAccessor>();
+builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddSwaggerDocument(setting =>
 {
@@ -33,8 +33,8 @@ builder.Services.AddCors(options =>
         builder =>
         {
             builder.AllowAnyOrigin()
-            .AllowAnyHeader()
-            .AllowAnyMethod();
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
         });
 });
 
@@ -46,23 +46,17 @@ builder.Services.AddAuthentication(opts =>
     opts.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     opts.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 })
-
-    .AddJwtBearer(opts =>
+.AddJwtBearer(opts =>
+{
+    opts.TokenValidationParameters = new TokenValidationParameters
     {
-        opts.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = issuer,
-            ValidateAudience = false,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secret))
-        };
-    });
-
-
-
-    
-
-
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secret)),
+        ValidateIssuer = true, // Issuer doðrulamasý yap
+        ValidIssuer = issuer, // Doðru issuer'ý ayarla
+        ValidateAudience = false // Audience doðrulamasý yapma (Gerekirse true yapýp ValidAudience ekleyin)
+    };
+});
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -79,11 +73,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-
-
 app.UseOpenApi();
 
-app.UseCors("ExpensesPolicy");
+app.UseCors("ExpensesPolicy"); // CORS middleware'i burada kullanýlmalý
 
 app.UseAuthentication();
 app.UseAuthorization();

@@ -8,7 +8,7 @@ namespace Expenses.Core
         List<Expense> GetExpenses();
         Expense GetExpense(int id);
         Expense CreateExpense(Expense expense);
-        void DeleteExpense(Expense expense);
+        void DeleteExpense(int expenseId);
         Expense EditExpense(Expense expense);
 
     }

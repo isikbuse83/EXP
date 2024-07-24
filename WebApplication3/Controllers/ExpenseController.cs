@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace WebApplication3.Controllers
 {
     [Authorize]
@@ -42,10 +43,10 @@ namespace WebApplication3.Controllers
         }
 
 
-        [HttpDelete]
-        public IActionResult DeleteExpense(Expense expense) 
+        [HttpDelete("{expenseId}")]
+        public IActionResult DeleteExpense(int expenseId) 
         {
-            _expensesServices.DeleteExpense(expense);
+            _expensesServices.DeleteExpense(expenseId);
             return Ok();
         
         

@@ -7,8 +7,13 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT": "false",
-        "JWT_SECRET": "This is my super duper secret ",
+        "JWT_SECRET": "This is my super duper secret dear customers",
         "JWT_ISSUER": "My Expenses"
+      
+       
+
+
+
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5099"
@@ -20,7 +25,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT": "false",
-        "JWT_SECRET": "This is my super duper secret ",
+        "JWT_SECRET": "This is my super duper secret dear customers ",
         "JWT_ISSUER": "My Expenses"
       },
       "dotnetRunMessages": true,
@@ -32,7 +37,7 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT": "false",
-        "JWT_SECRET": "This is my super duper secret ",
+        "JWT_SECRET": "This is my super duper secret dear customers ",
         "JWT_ISSUER": "My Expenses"
       }
     }

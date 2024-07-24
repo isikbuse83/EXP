@@ -22,15 +22,20 @@ namespace Expenses.Core
         {
             
 
-            _context.Add(expense);
+            _context.Add(new DB.Expense
+            {
+                Amount = expense.Amount,
+                Description = expense.Description,
+                UserId = _user.Id,
+            });
             _context.SaveChanges();
 
             return (Expense)expense;
         }
 
-        public void DeleteExpense(Expense expense)
+        public void DeleteExpense(int expenseId)
         {
-            var dbExpense = _context.Expenses.First(e => e.User.Id == _user.Id && e.Id == expense.Id);
+            var dbExpense = _context.Expenses.First(e => e.User.Id == _user.Id && e.Id == expenseId);
             _context.Expenses.Remove(dbExpense);
             _context.SaveChanges();
         }

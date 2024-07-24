@@ -22,7 +22,7 @@ namespace Expenses.Core
             _passwordHasher = passwordHasher;
         }
 
-        public async Task<AuthenticatedUser> SignIn(User user)
+        public async Task<AuthenticatedUser> SignIn(LoginUserDto user)
         {
             var dbUser = await _context.Users
                 .FirstOrDefaultAsync(u => u.Username== user.Username);
@@ -41,15 +41,16 @@ namespace Expenses.Core
             };
         }
 
+
         public async Task<AuthenticatedUser> SignUp(User user)
         {
-           var checkUser = await _context.Users
+            var checkUser = await _context.Users
                 .FirstOrDefaultAsync(u => u.Username.Equals(user.Username));
 
-            if (checkUser != null) 
+            if (checkUser != null)
             {
                 throw new UsernameAlreadyExistsException("username already exists");
-            
+
             }
 
             user.Password = _passwordHasher.HashPassword(user.Password);

@@ -154,3 +154,4 @@ C:\Users\isikb\OneDrive\Documents\EXP\WebApplication3\WebApplication3\bin\Debug\
 C:\Users\isikb\OneDrive\Documents\EXP\WebApplication3\WebApplication3\bin\Debug\net8.0\YamlDotNet.dll
 C:\Users\isikb\OneDrive\Documents\EXP\WebApplication3\WebApplication3\bin\Debug\net8.0\Microsoft.AspNet.Identity.Core.dll
 C:\Users\isikb\OneDrive\Documents\EXP\WebApplication3\WebApplication3\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\isikb\OneDrive\Documents\EXP\WebApplication3\WebApplication3\obj\Debug\net8.0\WebApplication3.sourcelink.json

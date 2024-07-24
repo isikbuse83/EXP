@@ -13,3 +13,4 @@ C:\Users\isikb\OneDrive\Documents\EXP\WebApplication3\Expenses.Core\obj\Debug\ne
 C:\Users\isikb\OneDrive\Documents\EXP\WebApplication3\Expenses.Core\obj\Debug\net8.0\refint\Expenses.Core.dll
 C:\Users\isikb\OneDrive\Documents\EXP\WebApplication3\Expenses.Core\obj\Debug\net8.0\Expenses.Core.pdb
 C:\Users\isikb\OneDrive\Documents\EXP\WebApplication3\Expenses.Core\obj\Debug\net8.0\ref\Expenses.Core.dll
+C:\Users\isikb\OneDrive\Documents\EXP\WebApplication3\Expenses.Core\obj\Debug\net8.0\Expenses.Core.sourcelink.json
