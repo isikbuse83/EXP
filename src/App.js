@@ -7,6 +7,7 @@ import HomePage from './components/HomePage';
 import SignInPage from './components/SigninPage';
 import SignUpPage from './components/SignUpPage';
 
+
 const App = () => {
   const isLoggedIn = useSelector(state => state.authentication.isLoggedIn);
   const state = useSelector(state => state);
@@ -27,6 +28,7 @@ const App = () => {
         <Route path='/' element={isLoggedIn ? <HomePage /> : <SignInPage />} />
         <Route path='/signup' element={<SignUpPage />} />
         <Route path='/signin' element={isLoggedIn ? <Navigate to='/' /> : <SignInPage />} />
+       
         <Route path='*' element={<h2>Page Not Found!</h2>} />
       </Routes>
     </BrowserRouter>
