@@ -22,6 +22,7 @@ const Navbar = () => {
             : <div style={{display: 'flex'}}>
                 <NavLink to = '/signup'>Sign Up</NavLink>
                 <NavLink to ='/signin' style={{marginLeft:'1rem'}}> Sign In</NavLink>
+                <NavLink to ='/chat' style={{marginLeft:'1rem', marginRight:'1rem'}}>Ai Asistan</NavLink>
                 
             </div>
         }

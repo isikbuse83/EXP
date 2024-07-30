@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
 import SignInPage from './components/SigninPage';
 import SignUpPage from './components/SignUpPage';
-
+import ClaudeAIChat from './components/ClauseAIChat ';
 
 const App = () => {
   const isLoggedIn = useSelector(state => state.authentication.isLoggedIn);
@@ -28,7 +28,7 @@ const App = () => {
         <Route path='/' element={isLoggedIn ? <HomePage /> : <SignInPage />} />
         <Route path='/signup' element={<SignUpPage />} />
         <Route path='/signin' element={isLoggedIn ? <Navigate to='/' /> : <SignInPage />} />
-       
+       <Route path='/chat' element={ isLoggedIn ? <Navigate to='/' /> : <ClaudeAIChat />} />
         <Route path='*' element={<h2>Page Not Found!</h2>} />
       </Routes>
     </BrowserRouter>
