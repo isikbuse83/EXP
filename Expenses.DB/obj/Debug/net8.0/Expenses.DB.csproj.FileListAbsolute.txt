@@ -12,3 +12,4 @@ C:\Users\isikb\OneDrive\Documents\EXP\WebApplication3\Expenses.DB\obj\Debug\net8
 C:\Users\isikb\OneDrive\Documents\EXP\WebApplication3\Expenses.DB\obj\Debug\net8.0\Expenses.DB.pdb
 C:\Users\isikb\OneDrive\Documents\EXP\WebApplication3\Expenses.DB\obj\Debug\net8.0\Expenses.DB.genruntimeconfig.cache
 C:\Users\isikb\OneDrive\Documents\EXP\WebApplication3\Expenses.DB\obj\Debug\net8.0\ref\Expenses.DB.dll
+C:\Users\isikb\OneDrive\Documents\EXP\WebApplication3\Expenses.DB\obj\Debug\net8.0\Expenses.DB.sourcelink.json

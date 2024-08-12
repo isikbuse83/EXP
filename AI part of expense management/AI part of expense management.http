@@ -1,0 +1,6 @@
+@AI_part_of_expense_management_HostAddress = http://localhost:5142
+
+GET {{AI_part_of_expense_management_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
