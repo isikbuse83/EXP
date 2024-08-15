@@ -1,0 +1,46 @@
+/* container: tüm formu sayfanın ortasına yerleştirir */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Tüm ekran yüksekliğini kaplar */
+    background-color: #e4fff2; /* Arka plan rengi */
+  }
+  
+  /* form: form elemanlarını dikey olarak hizalar */
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white; /* Formun arka planı beyaz */
+    padding: 20px;
+    border-radius: 10px; /* Kenarları yuvarlatma */
+    
+  }
+  
+
+  .input {
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid;;
+  }
+  
+ 
+  .button {
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5293e3;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #a770d3; 
+  }
+  

@@ -1,54 +1,66 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+// import React, { useState } from 'react';
+// import axios from 'axios';
 
+// const AnthropicAPIComponent = () => {
+//   const [input, setInput] = useState('');
+//   const [response, setResponse] = useState('');
+//   const [error, setError] = useState('');
 
-const ClaudeAIChat = () => {
-  const [prompt, setPrompt] = useState('');
-  const [response, setResponse] = useState('');
+//   const callAnthropicAPI = async () => {
+//     try {
+//       const apiKey = process.env.REACT_APP_CLAUDE_AI_API_KEY; // .env dosyasından API anahtarını alır
+//       if (!apiKey) {
+//         throw new Error('API anahtarı bulunamadı. REACT_APP_CLAUDE_AI_API_KEY ortam değişkeni olarak ayarlandığından emin olun.');
+//       }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+//       console.log('Anthropic API\'ye şu içerikle mesaj gönderiliyor:', input);
 
-    const apiKey = process.env.REACT_APP_CLAUDE_AI_API_KEY;
-    const apiUrl = 'https://api.claude.ai/v1/query';
+//       const response = await axios.post('https://api.anthropic.com/v1/complete', {
+//         max_tokens: 1024,
+//         messages: [
+//           {
+//             role: 'user',
+//             content: input,
+//           },
+//         ],
+//         model: 'claude-3-5-sonnet-20240620',
+//       }, {
+//         headers: {
+//           'Authorization': `Bearer ${apiKey}`,
+//         },
+//       });
 
-    const requestData = {
-      prompt: prompt,
-      max_tokens: 150,
-    };
+//       const rawResponse = response.data.content;
+//       console.log('Anthropic API\'den gelen ham yanıt:', rawResponse);
 
-    try {
-      const result = await axios.post(apiUrl, requestData, {
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-        },
-      });
+//       let extractedText = 'Metin içeriği ayıklanamadı.';
+//       if (rawResponse.includes('text=')) {
+//         const textStart = rawResponse.indexOf('text=') + 'text='.length;
+//         const textEnd = rawResponse.indexOf(',', textStart);
+//         extractedText = rawResponse.substring(textStart, textEnd);
+//       }
 
-      setResponse(result.data);
-    } catch (error) {
-      console.log('Error:', error);   //console.error('error'.error);
-      setResponse('Hata: ' + error.message);
-    }
-  };
+//       setResponse(extractedText);
+//     } catch (error) {
+//       console.error('Anthropic API ile iletişimde bir hata oluştu:', error.message);
+//       setError(error.message);
+//     }
+//   };
 
-  return (
-    <div>
-      <h1>Claude AI Soru-Cevap</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="prompt">Soru:</label>
-        <input
-          type="text"
-          id="prompt"
-          name="prompt"
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-        />
-        <button type="submit">Gönder</button>
-      </form>
-      <div id="response">{response}</div>
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <h1>Anthropic API Çağrısı</h1>
+//       <input 
+//         type="text" 
+//         value={input} 
+//         onChange={(e) => setInput(e.target.value)} 
+//         placeholder="Mesajınızı girin" 
+//       />
+//       <button onClick={callAnthropicAPI}>API Çağrısı Yap</button>
+//       {response && <div><h3>Yanıt:</h3><p>{response}</p></div>}
+//       {error && <div><h3>Hata:</h3><p>{error}</p></div>}
+//     </div>
+//   );
+// };
 
-export default ClaudeAIChat;
+// export default AnthropicAPIComponent;
