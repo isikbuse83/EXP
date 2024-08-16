@@ -48,6 +48,7 @@ const SignInPage = () => {
         <button type="submit" className="button">Sign In</button>
         <button type="button" className="button">Sign Up</button>
         <button type="button" className="button">AI Assistant</button>
+      
       </form>
     </div>
   );

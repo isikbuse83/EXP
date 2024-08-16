@@ -8,6 +8,7 @@ import SignInPage from './components/SigninPage';
 import SignUpPage from './components/SignUpPage';
 import ClaudeAIChat from './components/ClauseAIChat ';
 
+
 const App = () => {
   const isLoggedIn = useSelector(state => state.authentication.isLoggedIn);
   const state = useSelector(state => state);

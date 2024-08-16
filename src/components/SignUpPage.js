@@ -18,7 +18,8 @@ const dispatch = useDispatch();
             SignUp(dispatch,{username,email,password});
         }}>
       
-            <h4 style={{textAling: 'center'}}>Welcome Back</h4>
+            <h5 style={{textAling: 'center'}}>Welcome to My Expenses</h5><br></br><br></br>
+        
 <InputGroup className="mb-3">
 <FormControl placeholder="Username"
     onChange={event => setUsername(event.target.value)}>
@@ -45,6 +46,13 @@ const dispatch = useDispatch();
 <Button type="submit" variant='success' style={{margin: 'auto',display:'block' , width:'10rem'}}
 disabled={password !== confirmPassword || password.length <=0}>Sign Up 
 </Button>
+<label>
+  <input type="checkbox" />
+  <span className="checkmark"></span>
+  Kurumsal hesap olsun istiyorum 
+</label>
+
+
 
 </Form>
     </div>
