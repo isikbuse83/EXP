@@ -46,6 +46,34 @@ namespace Expenses.DB.Migrations
                     b.ToTable("Expenses");
                 });
 
+            modelBuilder.Entity("Expenses.DB.PersonalInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<double>("Amount")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Tax")
+                        .HasColumnType("float");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PersonalInfos");
+                });
+
             modelBuilder.Entity("Expenses.DB.User", b =>
                 {
                     b.Property<int>("Id")
@@ -71,7 +99,43 @@ namespace Expenses.DB.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("Expenses.DB.UserCorporate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserCorporates");
+                });
+
             modelBuilder.Entity("Expenses.DB.Expense", b =>
+                {
+                    b.HasOne("Expenses.DB.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Expenses.DB.PersonalInfo", b =>
                 {
                     b.HasOne("Expenses.DB.User", "User")
                         .WithMany()

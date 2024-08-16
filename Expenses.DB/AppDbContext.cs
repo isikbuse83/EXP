@@ -6,8 +6,10 @@ namespace Expenses.DB
     {
         public DbSet<Expense> Expenses { get; set; }
         public DbSet<User> Users { get; set; }
-        
 
+        public DbSet<UserCorporate> UserCorporates { get; set; }
+
+        public DbSet<PersonalInfo> PersonalInfos { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
