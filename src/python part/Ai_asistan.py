@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 # .env dosyasından API anahtarını yükle
 load_dotenv()
-API_KEY = os.getenv("sk-ant-api03-_0T...4wAA")
+API_KEY = os.getenv("your api key")
 
 # API endpoint'i (bu örnek URL'dir, gerçek URL farklı olacaktır)
 API_URL = "https://api.anthropic.com/v1/completions"

@@ -8,17 +8,20 @@ const [username,setUsername] = useState('');
 const [email,setEmail] = useState('');
 const [password,setPassword] = useState('');
 const [confirmPassword,setConfirmPassword] = useState('');
+const [corporateAccount,setCorporateAccount]=useState(false);
 const dispatch = useDispatch();
+
+const handleSignUp = (event) => {
+    event.preventDefault();
+    SignUp(dispatch, { username, email, password, corporateAccount }); // Checkbox durumunu da gönder
+};
 
 
     return(
-    <div style={{width: '30rem',margin: 'auto',paddingTop:'8px'}}>
-        <Form onSubmit={event => {
-            event.preventDefault();
-            SignUp(dispatch,{username,email,password});
-        }}>
-      
-            <h5 style={{textAling: 'center'}}>Welcome to My Expenses</h5><br></br><br></br>
+        <div style={{ width: '30rem', margin: 'auto', paddingTop: '8px' }}>
+        <Form onSubmit={handleSignUp}>
+            <h5 style={{ textAlign: 'center' }}>Welcome to My Expenses</h5><br /><br />
+
         
 <InputGroup className="mb-3">
 <FormControl placeholder="Username"
@@ -44,10 +47,11 @@ const dispatch = useDispatch();
 </FormControl>
 </InputGroup>
 <Button type="submit" variant='success' style={{margin: 'auto',display:'block' , width:'10rem'}}
-disabled={password !== confirmPassword || password.length <=0}>Sign Up 
+disabled={password !== confirmPassword || password.length <=0} onClick={handleSignUp}>Sign Up
 </Button>
 <label>
-  <input type="checkbox" />
+  <input type="checkbox"  checked={corporateAccount} 
+  onChange={() => setCorporateAccount(!corporateAccount)}/>
   <span className="checkmark"></span>
   Kurumsal hesap olsun istiyorum 
 </label>
